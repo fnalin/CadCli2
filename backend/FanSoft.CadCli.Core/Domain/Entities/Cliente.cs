@@ -17,7 +17,7 @@ namespace FanSoft.CadCli.Core.Domain.Entities
         public string Nome { get; private set; }
         public Enums.Sexo Sexo { get; private set; }
 
-        public IEnumerable<Telefone> Telefones { get; private set; }
+        public IEnumerable<Telefone> Telefones { get; private set; } = new List<Telefone>();
 
     }
 }
