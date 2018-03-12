@@ -11,8 +11,12 @@ namespace FanSoft.CadCli.Api
         {
             services.AddMvc();
             services.AddCors();
+
             services.AddScoped(typeof(Core.Data.EF.CadCliDataContext));
+            services.AddTransient(typeof(Core.Domain.Contracts.Data.IUnitOfWork), typeof(Core.Data.EF.UnitOfWork));
             services.AddTransient(typeof(Core.Domain.Contracts.Repositories.IClienteRepository), typeof(Core.Data.EF.Repositories.ClienteRepository));
+            services.AddTransient(typeof(Core.Domain.Commands.ClienteCommand.ClientesCommandHandler));
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, Core.Data.EF.CadCliDataContext ctx)
